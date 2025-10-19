@@ -1,0 +1,21 @@
+{% extends "sprints/base.html" %}
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-3 text-danger">{{ story.title }}</h2>
+
+  <div class="mb-3">
+    <p><strong>Description:</strong></p>
+    <p class="small">{{ story.description }}</p>
+  </div>
+
+  <div class="mb-3">
+    <p><strong>Status:</strong> <span class="badge bg-danger">{{ story.status }}</span></p>
+  </div>
+
+  <div class="d-flex gap-2">
+    <a href="{% url 'sprints:story-edit' story.pk %}" class="btn btn-outline-warning">Edit</a>
+    <a href="{% url 'sprints:story-delete' story.pk %}" class="btn btn-outline-danger">Delete</a>
+    <a href="{% url 'sprints:sprint-kanban' pk=story.sprint.pk %}" class="btn btn-outline-secondary">Back to Board</a>
+  </div>
+</div>
+{% endblock %}
