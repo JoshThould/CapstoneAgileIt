@@ -1,0 +1,47 @@
+{% extends 'sprints/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+  <h2 class="text-danger mb-4">Sprint Kanban Board</h2>
+  <h4>Sprint: {{ sprint.title }}</h4>
+
+  {% if messages %}
+  <div class="mb-3">
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <a href="{% url 'sprints:story-create' %}?sprint={{ sprint.pk }}" class="btn btn-danger mb-3" aria-label="Add a new story to this sprint">+ Add Story</a>
+  
+  <div class="kanban-wrapper d-flex justify-content-center">
+    <div class="kanban-scroll d-flex flex-wrap gap-4" role="region" aria-label="Kanban board">
+    {% for column in columns %}
+    <div class="card border-danger shadow-sm kanban-column" style="min-width: 300px; flex: 0 0 auto;" role="group" aria-label="Column: {{ column.status }}">
+      <div class="card-header bg-danger text-white text-center">
+        {{ column.status }}
+      </div>
+      <div class="card-body p-2 story-list" data-status="{{ column.status }}" style="min-height: 400px;">
+        {% for story in column.stories %}
+        <div class="card mb-2 border-start border-danger bg-light story-card" data-story-id="{{ story.id }}" role="article" aria-label="Story: {{ story.title }}">
+          <div class="card-body p-2 d-flex flex-column justify-content-between" style="min-height: 120px;">
+            <h6 class="card-title mb-1">{{ story.title }}</h6>
+            <p class="card-text small text-muted">{{ story.description }}</p>
+            <a href="{% url 'sprints:story-detail' story.pk %}" class="btn btn-sm btn-outline-danger mt-auto" aria-label="View details for {{ story.title }}">View Details</a>
+          </div>
+        </div>
+        {% empty %}
+        <p class="text-center">No stories</p>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+</div>
+{% endblock %}
