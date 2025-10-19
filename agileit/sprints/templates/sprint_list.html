@@ -1,0 +1,56 @@
+{% extends "sprints/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="sprint-list-page">
+
+  <!-- Breadcrumbs -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'sprints:dashboard' %}">Dashboard</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Sprints</li>
+    </ol>
+  </nav>
+
+  <!-- Flash Messages -->
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  <!-- Sprint List Header -->
+  <h2>All Sprints</h2>
+  <a href="{% url 'sprints:sprint-create' %}" class="btn btn-primary mb-3">
+    <i class="bi bi-plus-circle"></i> Create New Sprint
+  </a>
+
+  <!-- Sprint List -->
+  <ul class="list-group">
+    {% for sprint in sprints %}
+      <li class="list-group-item d-flex justify-content-between align-items-center sprint-row">
+        <div>
+          <strong>{{ sprint.title }}</strong><br>
+          <small>{{ sprint.start_date }} → {{ sprint.end_date }}</small>
+        </div>
+        <div>
+          <a href="{% url 'sprints:sprint-detail' sprint.pk %}" class="btn btn-outline-secondary btn-sm">
+            <i class="bi bi-info-circle"></i> Details
+          </a>
+          <a href="{% url 'sprints:sprint-kanban' sprint.pk %}" class="btn btn-outline-primary btn-sm">
+            <i class="bi bi-columns-gap"></i> Kanban
+          </a>
+        </div>
+      </li>
+    {% empty %}
+      <li class="list-group-item">
+        No sprints available. <a href="{% url 'sprints:sprint-create' %}">Create one now</a>.
+      </li>
+    {% endfor %}
+  </ul>
+
+</div>
+{% endblock %}
