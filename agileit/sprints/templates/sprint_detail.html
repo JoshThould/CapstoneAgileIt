@@ -1,0 +1,12 @@
+{% extends "sprints/base.html" %}
+{% load static %}
+
+{% block content %}
+  <h2>{{ sprint.title }}</h2>
+  <p><strong>Start:</strong> {{ sprint.start_date }}</p>
+  <p><strong>End:</strong> {{ sprint.end_date }}</p>
+
+  <a href="{% url 'sprints:sprint-edit' sprint.pk %}" class="btn btn-warning">Edit</a>
+  <a href="{% url 'sprints:sprint-delete' sprint.pk %}" class="btn btn-danger">Delete</a>
+  <a href="{% url 'sprints:sprint-list' %}" class="btn btn-secondary">Back to List</a>
+{% endblock %}
