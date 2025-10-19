@@ -1,0 +1,18 @@
+{% extends "sprints/base.html" %}
+{% block content %}
+<div class="story-delete-page">
+
+  <h2>Delete Story</h2>
+
+  <div class="alert alert-warning" role="alert">
+    <p>Are you sure you want to delete <strong>"{{ story.title }}"</strong>? This action cannot be undone.</p>
+  </div>
+
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, delete</button>
+    <a href="{% url 'sprints:story-detail' story.pk %}" class="btn btn-secondary">Cancel</a>
+  </form>
+
+</div>
+{% endblock %}
