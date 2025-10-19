@@ -1,0 +1,16 @@
+{% extends "sprints/base.html" %}
+{% load static %}
+
+{% block content %}
+  <h2>Delete Sprint</h2>
+
+  <div class="alert alert-warning" role="alert">
+    <p>Are you sure you want to delete <strong>"{{ sprint.title }}"</strong>? This action cannot be undone.</p>
+  </div>
+
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, delete</button>
+    <a href="{% url 'sprints:sprint-detail' sprint.pk %}" class="btn btn-secondary">Cancel</a>
+  </form>
+{% endblock %}
