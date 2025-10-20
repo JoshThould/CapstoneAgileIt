@@ -85,3 +85,21 @@ class SprintDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     def handle_no_permission(self):
         messages.error(self.request, "You don't have permission to view this sprint.")
         return redirect('sprints:sprint-list')
+
+class SprintUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Sprint
+    fields = ['title', 'start_date', 'end_date']
+    template_name = 'sprints/sprint_form.html'
+    success_url = reverse_lazy('sprints:sprint-list')
+
+    def test_func(self):
+        sprint = self.get_object()
+        return sprint.owner == self.request.user
+
+    def form_valid(self, form):
+        messages.success(self.request, "Sprint updated successfully.")
+        return super().form_valid(form)
+    
+    def handle_no_permission(self):
+        messages.error(self.request, "You don't have permission to view this sprint.")
+        return redirect('sprints:sprint-list')
