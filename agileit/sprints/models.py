@@ -22,3 +22,20 @@ class Sprint(models.Model):
 
     def get_absolute_url(self):
         return reverse("sprints:sprint-detail", kwargs={"pk": self.pk})
+    
+    # Story Model
+class Story(models.Model):
+    """A user-owned task or feature within a sprint."""
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="To Do")
+    sprint = models.ForeignKey(Sprint, on_delete=models.CASCADE, null=True, blank=True, related_name="stories")
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.title} [{self.status}]"
+
+    def get_absolute_url(self):
+        return reverse("stories:story-detail", kwargs={"pk": self.pk})
