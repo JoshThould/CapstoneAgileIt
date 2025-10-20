@@ -206,3 +206,14 @@ class StoryDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         messages.error(self.request, "You don't have permission to view this sprint.")
         return redirect('sprints:sprint-list')
 
+# Drag and drop functionality
+
+@csrf_exempt
+def update_status(request, story_id):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        new_status = data.get('status')
+        story = Story.objects.get(pk=story_id)
+        story.status = new_status
+        story.save()
+        return JsonResponse({'success': True})
