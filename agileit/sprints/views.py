@@ -16,3 +16,16 @@ from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import json
+
+
+
+# Dashboard view
+class DashboardView(LoginRequiredMixin, TemplateView):
+    template_name = 'sprints/dashboard.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['stories_todo'] = Story.objects.filter(status='To Do', owner=self.request.user)
+        context['stories_in_progress'] = Story.objects.filter(status='In Progress', owner=self.request.user)
+        context['stories_done'] = Story.objects.filter(status='Done', owner=self.request.user)
+        return context
