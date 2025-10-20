@@ -1,0 +1,580 @@
+/* Global Styles */
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Header Styles */
+header {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 1rem 0;
+  border-bottom: 1px solid #333;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.branding {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.branding i {
+  font-size: 1.5rem;
+  color: #e63946;
+}
+
+.branding h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-badge {
+  background-color: #e63946;
+  color: #fff;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.logout {
+  color: #ccc;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.logout:hover {
+  color: #fff;
+}
+
+/* Title Styles */
+.agile {
+  color: #fff;
+}
+
+.it {
+  color: #e63946; /* Your red accent */
+}
+
+.it::after {
+  content: '|';
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Base layout */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header and title */
+.dashboard-header h1 {
+    color: red;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Quick action button */
+.quick-action-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.quick-action-btn:hover {
+    background-color: #e03b3b;
+}
+
+/* Dashboard grid */
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background-color: #1e1e1e;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.05);
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    color: red;
+}
+
+.card-icon {
+    font-size: 2rem;
+    color: red;
+    margin-bottom: 0.5rem;
+}
+
+/* Buttons */
+
+.btn-primary {
+  background-color: red !important;
+  color: white !important;
+  border: none !important;
+}
+
+.btn-primary:hover {
+  background-color: darkred !important;
+  color: white !important;
+}
+
+.btn {
+    display: inline-block !important;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem !important;
+    background-color: red !important;
+    color: white !important;
+    text-decoration: none !important;
+    border-radius: 5px !important;
+    border: none !important; /* Remove Bootstrap's blue border */
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: darkred !important;
+    color: white !important; /* Ensure text stays white on hover */
+    border: none !important; /* Keep border removed on hover */
+}
+
+/* Specific override for dashboard buttons */
+.dashboard-container .btn,
+.card .btn {
+    background-color: red !important;
+    border: none !important;
+    color: white !important;
+}
+
+.dashboard-container .btn:hover,
+.card .btn:hover {
+    background-color: darkred !important;
+    color: white !important;
+    border: none !important;
+}
+
+/* Kanban Board Styles */
+.kanban-wrapper {
+  margin-top: 1rem;
+}
+
+.kanban-scroll {
+  overflow-x: auto;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.kanban-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+.kanban-scroll::-webkit-scrollbar-thumb {
+  background-color: #dc3545;
+  border-radius: 4px;
+}
+
+/* Story Card Styles */
+.story-card {
+  background-color: #1e1e1e;
+  color: red;
+  transition: background-color 0.2s ease-in-out;
+}
+.story-card:hover {
+  background-color: #2a2a2a; /* Slight darkening on hover */
+  transform: scale(1.02);
+}
+
+.story-card .card-body {
+  background-color: inherit;
+}
+
+.story-card {
+  cursor: grab;
+}
+.story-card:active {
+  cursor: grabbing;
+  opacity: 0.8;
+}
+
+/* Story Card Text Limits - 200 words max */
+.story-card .card-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.story-card .card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 12; /* Roughly 200 words (avg 16-17 words per line) */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 18em; /* Adjust based on line height */
+    line-height: 1.5em;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Ensure consistent story card sizing */
+.story-card {
+    background-color: #1e1e1e;
+    color: red;
+    transition: background-color 0.2s ease;
+    min-height: 280px; /* Consistent height for ~200 words */
+    max-height: 320px;
+    overflow: hidden;
+}
+
+.story-card .card-body {
+    background-color: inherit;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #1a1a1a;
+    color: #ccc;
+    padding: 2rem 0;
+    border-top: 1px solid #333;
+    text-align: center;
+}
+
+footer h2 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    color: #ccc;
+}
+
+
+.social-links a {
+    margin: 0 10px;
+    font-size: 24px; 
+    color: red;
+    transition: color 0.3s ease;
+
+}
+
+.social-links a:hover {
+    color: darkred; 
+}
+
+
+/* Sprint List Page Styles */
+.sprint-list-page .btn {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-top: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.sprint-list-page .btn:hover {
+    background-color: darkred;
+}
+
+.sprint-list-page .btn-primary {
+    background-color: red;
+}
+
+.sprint-list-page .btn-primary:hover {
+    background-color: darkred;
+}
+
+/* Sprint row hover effect */
+.sprint-list-page .sprint-row:hover {
+    background-color: #2a2a2a; /* 
+}
+
+/* Story row hover effect - Updated for dark theme */
+.story-list-page .story-row:hover {
+    background-color: #2a2a2a; /
+}
+
+/* delete pages styles */
+.story-delete-page .alert {
+    margin-top: 1rem;
+}
+
+/* Story form layout */
+.story-form-page h2 {
+    margin-bottom: 1rem;
+}
+
+.story-form-page .btn {
+    margin-right: 8px;
+}
+
+/* Kanban Board Styles */
+
+.kanban-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.kanban-scroll {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  overflow-x: visible;
+  max-width: 1200px; 
+}
+
+.kanban-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.kanban-scroll::-webkit-scrollbar-thumb {
+  background-color: #dc3545;
+  border-radius: 4px;
+}
+
+.kanban-column {
+  min-width: 300px;
+  flex: 0 0 auto;
+}
+
+/* Override Bootstrap card styles - make selectors more specific */
+.dashboard-container .card,
+.grid-container .card,
+.card.story-card {
+    background-color: #1e1e1e !important;
+    color: #e0e0e0 !important;
+    border: 1px solid #333 !important;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.05);
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.dashboard-container .card:hover,
+.grid-container .card:hover {
+    transform: translateY(-5px);
+    background-color: #2a2a2a !important;
+}
+
+.dashboard-container .card h3,
+.grid-container .card h3 {
+    color: red !important;
+}
+
+/* Story Card Styles - More specific selectors */
+.story-card.card {
+    background-color: #1e1e1e !important;
+    color: red !important;
+    transition: background-color 0.2s ease;
+    min-height: 280px;
+    max-height: 320px;
+    overflow: hidden;
+    border: 1px solid #333 !important;
+}
+
+.story-card.card:hover {
+    background-color: #2a2a2a !important;
+}
+
+.story-card.card .card-body {
+    background-color: inherit !important;
+    color: inherit !important;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Card text and titles */
+.story-card.card .card-title {
+    color: red !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.story-card.card .card-text {
+    color: #e0e0e0 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 12;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 18em;
+    line-height: 1.5em;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+/* Login Page Fixes */
+.login-page form {
+  background-color: #1e1e1e;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+}
+
+.login-page label {
+  color: #e0e0e0;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.login-page input {
+  background-color: #2a2a2a;
+  color: #fff;
+  border: 1px solid #444;
+  padding: 0.5rem;
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.login-page button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  width: 100%;
+}
+
+/* Login Page Styles */
+
+.login-page input[type="checkbox"] {
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+.login-page label[for="id_remember"] {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Responsive styles */
+
+@media (max-width: 768px) {
+  .kanban-scroll {
+    flex-direction: column;
+    align-items: center;
+    overflow-x: visible;
+  }
+
+  .kanban-column {
+    width: 100%;
+    min-width: unset;
+    flex: 1 1 auto;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .main-content {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .social-links {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  footer h2 {
+    font-size: 0.85rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .kanban-scroll {
+    flex-direction: row;
+    justify-content: space-between;
+    overflow-x: auto;
+    gap: 1rem;
+  }
+
+  .kanban-column {
+    width: 22%;
+    min-width: 250px;
+    flex: 0 0 auto;
+  }
+
+  .sidebar {
+    display: block;
+    width: 250px;
+  }
+
+  .main-content {
+    margin-left: 260px;
+    padding: 2rem;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1.5rem;
+  }
+
+  footer h2 {
+    font-size: 1rem;
+  }
+}
