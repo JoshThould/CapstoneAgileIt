@@ -103,3 +103,20 @@ class SprintUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def handle_no_permission(self):
         messages.error(self.request, "You don't have permission to view this sprint.")
         return redirect('sprints:sprint-list')
+
+class SprintDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Sprint
+    template_name = 'sprints/sprint_confirm_delete.html'
+    success_url = reverse_lazy('sprints:sprint-list')
+
+    def test_func(self):
+        sprint = self.get_object()
+        return sprint.owner == self.request.user
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, "Sprint deleted successfully.")
+        return super().delete(request, *args, **kwargs)
+    
+    def handle_no_permission(self):
+        messages.error(self.request, "You don't have permission to view this sprint.")
+        return redirect('sprints:sprint-list')
