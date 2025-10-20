@@ -120,3 +120,89 @@ class SprintDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def handle_no_permission(self):
         messages.error(self.request, "You don't have permission to view this sprint.")
         return redirect('sprints:sprint-list')
+    
+    # Story Views
+class StoryListView(LoginRequiredMixin, ListView):
+    model = Story
+    template_name = 'sprints/story_list.html'
+    context_object_name = 'stories'
+
+    def get_queryset(self):
+        return Story.objects.filter(owner=self.request.user)
+
+class StoryCreateView(LoginRequiredMixin, CreateView):
+    model = Story
+    fields = ['title', 'description', 'status', 'sprint']
+    template_name = 'sprints/story_form.html'
+    success_url = reverse_lazy('sprints:story-list')
+
+    def get_initial(self):
+        sprint_id = self.request.GET.get('sprint')
+        if sprint_id:
+            try:
+                return {'sprint': Sprint.objects.get(pk=sprint_id)}
+            except Sprint.DoesNotExist:
+                pass
+        return super().get_initial()
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        messages.success(self.request, "Story created successfully.")
+        return super().form_valid(form)
+
+
+
+class StoryDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+    model = Story
+    template_name = 'sprints/story_detail.html'
+    context_object_name = 'story'
+
+    def test_func(self):
+        story = self.get_object()
+        return story.owner == self.request.user
+    
+    def handle_no_permission(self):
+        messages.error(self.request, "You don't have permission to view this sprint.")
+        return redirect('sprints:sprint-list')
+
+    
+class StoryUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Story
+    fields = ['title', 'description', 'status', 'sprint']
+    template_name = 'sprints/story_form.html'
+    
+    def get_success_url(self):
+        return reverse_lazy('sprints:sprint-kanban', kwargs={'pk': self.object.sprint.pk})
+
+    def test_func(self):
+        story = self.get_object()
+        return story.owner == self.request.user
+
+    def form_valid(self, form):
+        messages.success(self.request, "Story updated successfully.")
+        return super().form_valid(form)
+    
+    def handle_no_permission(self):
+        messages.error(self.request, "You don't have permission to view this sprint.")
+        return redirect('sprints:sprint-list')
+
+
+class StoryDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):             
+    model = Story
+    template_name = 'sprints/story_confirm_delete.html'
+
+    def get_success_url(self):
+        return reverse_lazy('sprints:sprint-kanban', kwargs={'pk': self.object.sprint.pk})
+
+    def test_func(self):
+        story = self.get_object()
+        return story.owner == self.request.user
+    
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, "Story deleted successfully.")
+        return super().delete(request, *args, **kwargs)
+    
+    def handle_no_permission(self):
+        messages.error(self.request, "You don't have permission to view this sprint.")
+        return redirect('sprints:sprint-list')
+
