@@ -53,3 +53,23 @@ class SprintKanbanView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     def test_func(self):
         sprint = get_object_or_404(Sprint, pk=self.kwargs['pk'])
         return sprint.owner == self.request.user
+
+# Sprints Views
+
+class SprintListView(LoginRequiredMixin, ListView):
+    model = Sprint
+    template_name = 'sprints/sprint_list.html'
+    context_object_name = 'sprints'
+
+    def get_queryset(self):
+        return Sprint.objects.filter(owner=self.request.user)
+
+class SprintCreateView(LoginRequiredMixin, CreateView):
+    model = Sprint
+    fields = ['title', 'start_date', 'end_date']  # exclude 'user' from the form
+    template_name = 'sprints/sprint_form.html'
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user  # set the owner before saving
+        return super().form_valid(form)
+
