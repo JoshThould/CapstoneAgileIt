@@ -73,3 +73,15 @@ class SprintCreateView(LoginRequiredMixin, CreateView):
         form.instance.owner = self.request.user  # set the owner before saving
         return super().form_valid(form)
 
+class SprintDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+    model = Sprint
+    template_name = 'sprints/sprint_detail.html'
+    context_object_name = 'sprint'
+
+    def test_func(self):
+        sprint = self.get_object()
+        return sprint.owner == self.request.user
+    
+    def handle_no_permission(self):
+        messages.error(self.request, "You don't have permission to view this sprint.")
+        return redirect('sprints:sprint-list')
