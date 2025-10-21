@@ -42,17 +42,20 @@
       ...
     </ul>
 
-    <!-- User Actions -->
-    <div class="user-actions d-flex align-items-center">
-      {% if user.is_authenticated %}
-        <div class="user-badge me-2">{{ user.username|slice:":1"|upper }}</div>
-        <span class="me-3">{{ user.username }}</span>
-        <a href="{{ logout_url }}" class="btn btn-sm btn-outline-light">Logout</a>
-      {% else %}
-        <a class="btn btn-sm btn-outline-primary me-2" href="{{ login_url }}">Login</a>
-        <a class="btn btn-sm btn-primary" href="{{ signup_url }}">Sign Up</a>
-      {% endif %}
-    </div>
+<!-- User Actions -->
+<div class="user-actions d-flex align-items-center">
+  {% if user.is_authenticated %}
+    <div class="user-badge me-2">{{ user.username|slice:":1"|upper }}</div>
+    <span class="me-3">{{ user.username }}</span>
+    {% if logout_url %}
+      <a href="{{ logout_url }}" class="btn btn-sm btn-outline-light">Logout</a>
+    {% endif %}
+  {% else %}
+    {% if login_url %}
+      <a class="btn btn-sm btn-outline-primary" href="{{ login_url }}">Login</a>
+    {% endif %}
+  {% endif %}
+</div>
 
   </div>
 </div> 
