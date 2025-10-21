@@ -20,7 +20,6 @@ from django.urls import path, include, reverse_lazy
 from django.views.generic import RedirectView
 
 urlpatterns = [
- urlpatterns = [
     path('', include(('sprints.urls', 'sprints'), namespace='sprints')),
     path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
