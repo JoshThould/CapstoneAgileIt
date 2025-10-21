@@ -67,7 +67,7 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
 ]
 
-ROOT_URLCONF = 'config.urls'
+ROOT_URLCONF = 'agileit.urls'
 
 TEMPLATES = [
     {
