@@ -4,9 +4,9 @@ AgileIt is a lightweight Agile project tracker built with Django and Bootstrap. 
 
 ## Repository:
 
-Github repo: [My Project Repository](https://github.com/JoshThould/AgileIt)
+Github repo: [My Project Repository](https://github.com/JoshThould/CapstoneAgileIt)
 
-Github project board: [My Project Board](https://github.com/users/JoshThould/projects/12/views/1)
+Github project board: [My Project Board](https://github.com/users/JoshThould/projects/12)
 
 Deployed Link: [Deployed Link](https://agileit-cde4464b00d1.herokuapp.com/accounts/login/?next=/dashboard/)
 
