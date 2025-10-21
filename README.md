@@ -8,7 +8,7 @@ Github repo: [My Project Repository](https://github.com/JoshThould/CapstoneAgile
 
 Github project board: [My Project Board](https://github.com/users/JoshThould/projects/12)
 
-Deployed Link: [Deployed Link](https://agileit-cde4464b00d1.herokuapp.com/accounts/login/?next=/dashboard/)
+Deployed Link: [Deployed Link](https://capstoneagileit.herokuapp.com/)
 
 ## Wireframes:
 
