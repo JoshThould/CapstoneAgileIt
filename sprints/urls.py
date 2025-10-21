@@ -19,6 +19,7 @@ app_name = "sprints"
 
 urlpatterns = [
     # Dashboard
+    path('', DashboardView.as_view(), name='home'),
     path('dashboard/', DashboardView.as_view(), name='dashboard'),
 
     # Sprints
