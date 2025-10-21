@@ -28,7 +28,12 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "fallback-dev-key")
 
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '.herokuapp.com',
+    'capstoneagileit-b32ac59b941d.herokuapp.com',
+]
 
 
 # Application definition
