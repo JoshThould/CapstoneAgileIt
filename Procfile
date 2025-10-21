@@ -1,1 +1,1 @@
-web: gunicorn agileit.config.wsgi
+web: gunicorn config.wsgi
