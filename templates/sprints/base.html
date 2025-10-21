@@ -47,13 +47,9 @@
   {% if user.is_authenticated %}
     <div class="user-badge me-2">{{ user.username|slice:":1"|upper }}</div>
     <span class="me-3">{{ user.username }}</span>
-    {% if logout_url %}
-      <a href="{{ logout_url }}" class="btn btn-sm btn-outline-light">Logout</a>
-    {% endif %}
+    <a href="{% url 'account_logout' %}" class="btn btn-sm btn-outline-light">Logout</a>
   {% else %}
-    {% if login_url %}
-      <a class="btn btn-sm btn-outline-primary" href="{{ login_url }}">Login</a>
-    {% endif %}
+    <a class="btn btn-sm btn-outline-primary" href="{% url 'account_login' %}">Login</a>
   {% endif %}
 </div>
 
