@@ -14,11 +14,7 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-{% block auth_urls %}
-  {% url 'account_login' as login_url %}
-  {% url 'account_signup' as signup_url %}
-  {% url 'account_logout' as logout_url %}
-{% endblock %}
+{% block auth_urls %}{% endblock %}
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container d-flex justify-content-between align-items-center py-2">
