@@ -25,8 +25,8 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "fallback-dev-key")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-ALLOWED_HOSTS = ['*']
+DEBUG = False
+ALLOWED_HOSTS = ['capstoneagileit-fc7ed21ed3c6.herokuapp.com', '.herokuapp.com']
 
 # Application definition
 
