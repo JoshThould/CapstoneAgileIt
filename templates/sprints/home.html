@@ -1,0 +1,11 @@
+{% extends "sprints/base.html" %}
+{% block content %}
+<div class="container text-center mt-5">
+  <h1 class="mb-4">Welcome to AgileIt</h1>
+  <p class="lead">Plan sprints, track stories, and manage tasks with ease.</p>
+  <div class="mt-4">
+    <a href="{% url 'account_login' %}" class="btn btn-primary me-2">Login</a>
+    <a href="{% url 'account_signup' %}" class="btn btn-secondary">Register</a>
+  </div>
+</div>
+{% endblock %}
