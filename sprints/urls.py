@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import (
+    HomeView,
     DashboardView,
     SprintListView,
     SprintCreateView,
@@ -18,8 +19,10 @@ from .views import (
 app_name = "sprints"
 
 urlpatterns = [
+    # Landing page
+    path('', HomeView.as_view(), name='home'),
+
     # Dashboard
-    path('', DashboardView.as_view(), name='home'),
     path('dashboard/', DashboardView.as_view(), name='dashboard'),
 
     # Sprints
@@ -29,10 +32,14 @@ urlpatterns = [
     path('sprints/<int:pk>/edit/', SprintUpdateView.as_view(), name='sprint-edit'),
     path('sprints/<int:pk>/delete/', SprintDeleteView.as_view(), name='sprint-delete'),
     path('sprints/<int:pk>/kanban/', SprintKanbanView.as_view(), name='sprint-kanban'),
+
+    # Stories
     path('stories/', StoryListView.as_view(), name='story-list'),
     path('stories/new/', StoryCreateView.as_view(), name='story-create'),
     path('stories/<int:pk>/', StoryDetailView.as_view(), name='story-detail'),
     path('stories/<int:pk>/edit/', StoryUpdateView.as_view(), name='story-edit'),
     path('stories/<int:pk>/delete/', StoryDeleteView.as_view(), name='story-delete'),
-    path('update-status/<int:story_id>/', update_status, name='update-status'), # Drag and drop functionality
+
+    # Drag and drop
+    path('update-status/<int:story_id>/', update_status, name='update-status'),
 ]
