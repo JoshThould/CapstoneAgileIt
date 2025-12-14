@@ -12,16 +12,16 @@ Deployed Link: [Deployed Link](https://capstoneagileit.herokuapp.com/)
 
 ## Wireframes:
 
-![Dashboard](../docs/dashwire.png)
-![Features](../docs/featurewire.png)
+![Dashboard](/docs/dashwire.png)
+![Features](/docs/featurewire.png)
 
 ## Colour Palette
 
-![Colour Palette](../docs/agileitpallette.png)
+![Colour Palette](/docs/agileitpallette.png)
 
 ## ERD
 
-![Entity Relationship Diagram](../docs/ERD.png)
+![Entity Relationship Diagram](/docs/ERD.png)
 
 ## Features
 - Kanban board with column-based story organization
@@ -32,19 +32,19 @@ Deployed Link: [Deployed Link](https://capstoneagileit.herokuapp.com/)
 
 ### Control Panel:
 
-![Control Panel](../docs/controlpanel.png)
+![Control Panel](/docs/controlpanel.png)
 
 ### kanBan Board: 
 
-![KanBan Board](../docs/kanban.png)
+![KanBan Board](/docs/kanban.png)
 
 ### Sprint list
 
-![Sprint list page](../docs/sprintlist.png)
+![Sprint list page](/docs/sprintlist.png)
 
 ### Story list
 
-![Story list page](../docs/storylist.png)
+![Story list page](/docs/storylist.png)
 
 
 
@@ -52,7 +52,7 @@ Deployed Link: [Deployed Link](https://capstoneagileit.herokuapp.com/)
 These features are not yet implemented in the MVP but are part of the AgileIt roadmap:
 - Reports: Generate sprint analytics, velocity charts, and burndown graphs.
 - Team Management: Assign roles, track member contributions, and manage permissions. I included the buttons with a modal in the project to show that they're going to be included in future iterations but due to time considerations and the fact they didn't add core functionality i decided not to include them in this iteration. 
-- Epic functionality wasalso prototyped but removed from the final MVP to maintain clarity and focus. 
+- Epic functionality was also prototyped but removed from the final MVP to maintain clarity and focus. 
 - Tasks & Acceptance Criteria
 These models were prototyped but removed from the final MVP to streamline the user experience. Future versions may reintroduce them as nested components within stories.
 
@@ -99,6 +99,12 @@ Run the development server
 - 200 OK response for authenticated users
 - Redirects for unauthenticated access
 
+### Test Output Screenshot 
+
+
+![Test Output](docs/test_output.png)
+
+
 ### Manual Testing 
 
 - Responsiveness: The website has been tested on mobile, tablet and desktop devices to ensure responsiveness to all screen sizes.
@@ -111,17 +117,24 @@ only been tested on Chrome.
 - Admin panel access and CRUD operations
 - Flash messages and redirects
 
-### Statoc and Template checks
+### Static and Template checks
 
-- Verified static file collection via: pyhton manage.py collectstatic
+- Verified static file collection via: python manage.py collectstatic
 
 ### Validation Testing
 
-All code has been validated through:
+- **HTML**: Ran `base.html` through the W3C validator. The tool flagged 8 errors, mostly related to Django templating syntax (`{% static %}`), missing `<title>` tags, and Bootstrap/ARIA quirks. These do not affect rendering or functionality, but future iterations will address semantic and accessibility improvements.
 
-HTML: W3C Markup Validator.
-CSS: W3C CSS Validator.
-Python: PEP8 validation to ensure code quality.
+- **CSS**: Ran main stylesheet through W3C CSS validator. One parse error flagged, plus six warnings related to vendor-specific extensions (e.g. `-webkit-scrollbar`, `-webkit-line-clamp`). These are intentional and do not impact layout or responsiveness.
+
+- **Python (PEP8)**: Ran `flake8` on the `sprints/` app. The tool flagged several PEP8 violations, mostly related to line length, blank lines, and unused imports. These do not affect functionality or readability in context, but future iterations will address formatting consistency. Screenshot below shows full output.
+
+
+### Validation Testing Screenshots
+![HTML Validation - base.html](docs/html_validation_base.png)
+![HTML Validation - continued](docs/html_validation_base_2.png)
+![CSS Validation](docs/css_validation.png)
+![PEP8 Validation](docs/pep8_validation.png)
 
 ## Known Issues
 
@@ -146,7 +159,7 @@ Copilot was used to:
 - Generate code and as a tutor to explain how the code worked
 - Generate ERD
 - Used to manage project alongside Githubprojects
-- Assitance in the choice of colour schemes
+- Assistance in the choice of colour schemes
 
 
 ## Conclusion:
