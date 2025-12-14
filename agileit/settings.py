@@ -45,7 +45,11 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/'
+
+# After login, go to the dashboard
+LOGIN_REDIRECT_URL = '/dashboard/'
+
+# After logout, go back to the public landing page
 LOGOUT_REDIRECT_URL = '/'
 
 AUTHENTICATION_BACKENDS = [
