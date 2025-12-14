@@ -163,8 +163,9 @@ Copilot was used to:
 
 
 ## Conclusion:
-AgileIt delivers a clean, functional MVP for Agile project tracking. Future iterations will expand team features, reporting, and UX polish to support more collaborative workflows.
-This project was challenging at times, and it was frustrating that early bugs disrupted the initial deployment—especially given the effort invested. But those setbacks became turning points. The process pushed me to deepen my understanding of Django, full-stack architecture, and deployment strategy.
+AgileIt delivers a clean, functional MVP for Agile project tracking. Future iterations will expand team features, reporting, and UX polish to support more collaborative workflows. This project was challenging at times, and it was frustrating that early bugs disrupted the initial deployment—especially given the effort invested. But those setbacks became turning points. The process pushed me to deepen my understanding of Django, full-stack architecture, and deployment strategy. Automated tests, manual walkthroughs, and validation checks were all completed, ensuring the MVP is functional, standards‑aware, and ready for deployment. 
+
+Beyond the technical delivery, this project strengthened my ability to triage issues under pressure, document clearly, and prioritize closure over perfection. AgileIt now provides a foundation that can be extended into a more collaborative platform with richer analytics and team management features in future iterations.
 
 
 ## Credits
