@@ -1,3 +1,4 @@
+{% extends "sprints/base.html" %}
 {% block content %}
 <div class="signup-page">
   <div class="row justify-content-center">
@@ -21,7 +22,8 @@
             <button type="submit" class="btn btn-success w-100">Create Account</button>
           </form>
           <p class="text-center mt-3">
-            Already have an account? <a href="{% url 'account_login' %}">Log in here</a>
+            Already have an account?
+            <a href="{% url 'account_login' %}">Log in here</a>
           </p>
         </div>
       </div>
